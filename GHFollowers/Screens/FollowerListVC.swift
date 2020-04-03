@@ -16,6 +16,16 @@ class FollowerListVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        NetworkManager.shared.getFollowers(for: username, page: 1) { result in
+            switch result {
+                case .failure(let error):
+                    self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
+                
+                case .success(let follower):
+                    print(follower.count)
+            }
+        }
     }
     
     
