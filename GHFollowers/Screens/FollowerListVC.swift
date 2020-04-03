@@ -15,11 +15,12 @@ class FollowerListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
